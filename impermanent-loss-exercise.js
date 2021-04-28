@@ -46,6 +46,17 @@ const getTokenReserves = async (uniswapLPContract, fromAddress) => {
 
     const uniswapLPContract = new Contract(uniswapLPContractABI, uniswapLPContractAddress);
 
+    // Example to how to get events
+    // const events = await uniswapLPContract.getPastEvents('Transfer', {
+    //     fromBlock:0,
+    //     toBlock: 'latest',
+    //     topics: [
+    //         '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+    //         '0x0000000000000000000000000000000000000000000000000000000000000000',
+    //         '0x000000000000000000000000fcd300aafe1fdb3166cd1a3b46463144fc2d46ad',
+    //     ]
+    // });
+
     const reserves = await getTokenReserves(uniswapLPContract, lpWalletAddress);
 
     const volatileCoinPriceInUSD = reserves.stableTokenReserves / reserves.volatileTokenReserves;
